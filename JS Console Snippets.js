@@ -18,3 +18,8 @@ console.log(noSpend);
 
 
 // Finds Error campaigns with No Spend: Still working on that....
+
+
+// Requires jQuerify extension on chrome work work:
+// Finds the .spend classes
+$("div.campaign-header_settings div.campaign-header_attribute div.spend") //  .css("border", "3px solid red");   helps highlight it
