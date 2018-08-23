@@ -1,6 +1,6 @@
 function numberToString(num) {
 
-  // This was for a code challenge on CodeWars (conver a number to a string). 
+  // This was for a code challenge on CodeWars (convert a number to a string). 
   // I wanted to attempt a version that did not rely
   // on a built-in method or type juggling. I did, however, use the Math.floor,
   // but only because the point of this excercise was not to round numbers
