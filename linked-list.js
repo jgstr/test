@@ -38,7 +38,7 @@ var LinkedList = function() {
 // in memorizing. I also made changes where I saw fit. This is a
 // work in progress as I studying Data Structures and Algorithms.
 
-function LinkedList() {
+function LinkedList2() {
 
   // properties
 
