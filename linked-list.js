@@ -1,3 +1,7 @@
+// I wanted to create a Linked List data structure in Javascript
+// without relying on the class syntax presented by others, 
+// of which only confused me.
+
 var LinkedList = function() {
 
   // In this case, this.head is the same thing as this.next for the other nodes
@@ -29,9 +33,8 @@ var LinkedList = function() {
 
 }
 
-/* I wanted to create a Linked List data structure in Javascript
-   without relying on the class syntax, of which only confuses me. */
 
+// Here's another linked list.
 // This is a LinkedList in Javascript as demonstrated by the book
 // Data Structures and Algorithms with Javascript by Michael
 // McMillan. I re-coded by hand only the features I was interested
@@ -49,9 +52,10 @@ function LinkedList2() {
   // methods
 
   this.append = append;
-
-  // .find is also used as a helper function
   this.find = find;
+  this.length = length;
+  this.remove = remove;
+  this.toString = toString;
 }
 
 function append(element) {
@@ -75,12 +79,21 @@ function find(element) {
   for (var i = 0; i < this.dataStore.length; ++i) {
 
     if (this.dataStore[i] === element) {
+
+      console.log("Found " + element + " at position " + i);
       return i;
     
     }
   } // end for
 
+  console.log("Did NOT find " + element);
   return -1
+}
+
+function length() {
+
+  console.log("The list holds " + this.listSize + " units of data.");
+  return this.listSize;
 }
 
 function remove(element) {
@@ -89,8 +102,20 @@ function remove(element) {
   if (foundAt > -1) {
     this.dataStore.splice(foundAt, 1);
     --this.listSize;
+
+    console.log(element + " was removed.");
     return true;
   }
 
   return false;
+}
+
+function toString() {
+
+  // Note: I don't like this as a 'to string' method because it
+  // does not allow for customizing the presentation of the ouput.
+  
+  console.log("Here are the items in the list: " + this.dataStore);
+  return this.dataStore;
+
 }
