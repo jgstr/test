@@ -15,6 +15,7 @@ function merge(left, right) {
         result.push(left.shift());
         leftLen -= 1;
       } else if (right[0] <= left[0]) {
+        // Note: I think the '<=' makes this implementation unstable
         result.push(right.shift());
         rightLen -= 1;
       }
