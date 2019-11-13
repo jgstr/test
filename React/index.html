@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>React Learning</title>
+    <!-- Loads React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+
+    <!-- Loads React DOM -->
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- Loads Babel mostly for JSX converter -->
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Import a component -->
+    <script type="text/babel" src="/WichtigTeil.js"></script>
+    <script type="text/babel">
+
+        // Create the React component as a constant. Arrow function returns HTML.
+
+        const UnterKopf = () => {
+
+            return (
+                <div>
+                    <h3>Ich lerne gern React</h3>
+                </div>
+            )
+        };
+
+        const Wilkommen = ({thema, etwas}) => {
+            return (
+            <header>
+                <h1>Wilkommon zu {thema}</h1>
+                <h2>{etwas}</h2>
+            </header>
+            )
+        };
+
+        const App = () => {
+            var wichtigeWorte = "Deise Sektion ist wichtig."
+            return (
+                <main >
+                    <Wilkommen thema="React" etwas="Los geht's" />
+                    <UnterKopf />
+                    <WichtigTeil worte={wichtigeWorte}/>
+                    <WichtigTeil worte="Alles was Mann isst, Mann ist."/>
+                </main>
+                
+            )
+        };
+
+        // Render the React components through the ReactDOM.
+        ReactDOM.render(
+            <App thema="React" etwas="Los geht's" />,
+            document.querySelector("#root") // Every element must go within "root" div.
+        );
+    </script>
+</body>
+</html>
