@@ -1,38 +1,17 @@
-const moduleWeights = [92349, 57040, 64079, 121555, 143735, 64642, 104858, 144446, 88871, 62338, 113424, 59960, 53999, 86867, 67224, 124130, 108921, 130492, 120361, 74426, 70397, 88106, 125442, 74237, 137818, 66633, 71756, 143276, 143456, 135698, 121124, 67739, 112861, 78572, 73565, 111899, 57543, 130314, 121605, 121426, 117143, 129957, 98042, 104760, 144846, 131238, 101076, 53328, 83592, 104077, 101952, 54137, 115363, 60556, 133086, 113361, 117829, 75003, 93729, 140022, 126219, 59907, 140589, 91812, 50485, 56232, 92858, 106820, 123423, 98553, 135315, 95583, 72278, 98702, 55709, 146773, 89719, 134752, 79562, 70455, 88468, 139824, 138646, 117516, 123267, 113754, 120353, 139145, 53219, 63053, 131434, 91705, 53650, 145234, 78461, 119587, 108976, 113613, 121790, 120366];
+// Advent of Code - Day 2
 
-const getFuelForWeight = moduleWeight => Math.floor(moduleWeight / 3) - 2;
+const intCodesStrings = "1,0,0,3,1,1,2,3,1,3,4,3,1,5,0,3,2,6,1,19,2,19,13,23,1,23,10,27,1,13,27,31,2,31,10,35,1,35,9,39,1,39,13,43,1,13,43,47,1,47,13,51,1,13,51,55,1,5,55,59,2,10,59,63,1,9,63,67,1,6,67,71,2,71,13,75,2,75,13,79,1,79,9,83,2,83,10,87,1,9,87,91,1,6,91,95,1,95,10,99,1,99,13,103,1,13,103,107,2,13,107,111,1,111,9,115,2,115,10,119,1,119,5,123,1,123,2,127,1,127,5,0,99,2,14,0,0";
+const intCodes = intCodesStrings.split(',').map(code => parseFloat(code));
+console.log("Codes: ", intCodes[0], intCodes[intCodes.length -1 ]);
 
-const MAX_RECURSIVE_STEPS = 120;
+// 1 = addition postion 1++ and position 1++,++. Place in position 1++, ++, ++
+// 2 = multiply position 1++ and positon 1++, ++. Place in position 1++, ++, ++
+// 99 = Stop program.
 
-const requiredFuelForModule = (moduleWeight, count) => { 
-    let totalWeight = moduleWeight;
-    const requiredFuel = getFuelForWeight(moduleWeight);
-    if(count < 1) {
-        throw new Error("You ran over your allowed stack.");
-    } else if(requiredFuel <= 0) {
-        return moduleWeight;
-    } else {
-        return totalWeight = totalWeight + requiredFuelForModule(requiredFuel, count--);
-    }
-};
+// Tests
+// 1,0,0,0,99 becomes 2,0,0,0,99 (1 + 1 = 2).
+// 2,3,0,3,99 becomes 2,3,0,6,99 (3 * 2 = 6).
 
-const requiredFuelRecursive = moduleWeights.reduce((accumulator, current) => {
-    const totalModuleFuel = requiredFuelForModule(current, MAX_RECURSIVE_STEPS) - current;
-    return accumulator + totalModuleFuel;
-}, 0);
-
-console.log("*** Total Fuel Requirements Recursively: ", requiredFuelRecursive);
-
-/* Tests 
-const testModuleWeight = 100756;
-const testModuleWeights = [100756, 100756, 100756];
-console.log("*** Required fuel for ONE TEST module (non recursive) is: ", getRequiredFuel(testModuleWeight));
-console.log("*** Required fuel for ONE TEST module (REcursive) is: ", getRequiredFuelRecursive(testModuleWeight, 20) - testModuleWeight);
-const requiredFuelRecursiveTest = testModuleWeights.reduce((accumulator, current) => {
-    const totalModuleFuel = getRequiredFuelRecursive(current, 120) - current;
-    return accumulator + totalModuleFuel;
-}, 0);
-
-console.log("*** Total Fuel Requirements Recursively for ALL TEST Modules: ", requiredFuelRecursiveTest);
-
-*/
+// Before running the program, replace position 1 with the value 12 and 
+// replace position 2 with the value 2. What value is left at position 0 
+// after the program halts?
