@@ -36,12 +36,3 @@ intCodes[2] = 2;
 const updatedIntCodes = startIntComputer(intCodes);
 console.log("Answer Position 1:", updatedIntCodes[0]);
 
-// const test = [1,0,0,0,99]; // should be 2,0,0,0,99 (1 + 1 = 2).
-// const test2 = [2,3,0,3,99]; // should be 2,3,0,6,99 (3 * 2 = 6).
-
-// const updatedTest = startIntComputer(test)
-// console.log("Test Results: ", updatedTest);
-// console.log(" ");
-// const updatedTest2 = startIntComputer(test2)
-// console.log("Test Results: ", updatedTest2);
-
